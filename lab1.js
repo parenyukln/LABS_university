@@ -3,11 +3,7 @@ function checkTheNumberType(item) {
 }
 
 function isNumberPositiveAndInteger(num) {
-    if (num >= 0) {
-        return Number.isInteger(num);
-    }
-
-    return false;
+    return num >= 0 ? Number.isInteger(num) : false;
 }
 
 function addNumber(array, number) {
@@ -15,9 +11,8 @@ function addNumber(array, number) {
         return null;
     }
 
-    let firstTerm = array.reduce((outputStr, curItem) => outputStr += curItem.toString());
-
-    const sum = parseInt(firstTerm, 10) + number;
+    const stringOfArrayValues = array.reduce((outputStr, curItem) => outputStr + curItem.toString(), '');
+    const sum = parseInt(stringOfArrayValues, 10) + number;
     const sumStr = sum.toString();
 
     return sumStr.split('').map((item) => parseInt(item, 10));
